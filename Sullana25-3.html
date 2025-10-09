@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instituto Estaca Sullana 2025-3</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Fondo gris claro */
+        }
+        .afiche-main-container {
+            max-width: 1200px; /* Ancho máximo para el contenido principal */
+            margin: 2rem auto;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .afiche-title {
+            font-size: 2.5rem; /* Texto extra grande */
+            font-weight: 800; /* Extra negrita */
+            color: #4f46e5; /* Indigo-700 */
+            margin-bottom: 1.5rem;
+        }
+        .afiche-subtitle {
+            font-size: 2rem; /* Texto grande */
+            font-weight: 700; /* Negrita */
+            color: #1f2937; /* Gris-800 */
+            margin-bottom: 2rem;
+        }
+        .afiche-description {
+            font-size: 1.125rem; /* Texto lg */
+            color: #4b5563; /* Gris-700 */
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .day-cards-grid-wrapper { /* Nuevo wrapper para el grid de tarjetas de día */
+            display: grid;
+            grid-template-columns: 1fr; /* Por defecto: 1 columna para pantallas pequeñas */
+            gap: 1.5rem; /* Espacio entre tarjetas de día */
+            justify-content: center;
+            align-items: stretch; /* Asegura que las tarjetas tengan la misma altura */
+        }
+        @media (min-width: 768px) { /* Para pantallas medianas (md) */
+            .day-cards-grid-wrapper {
+                grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columnas */
+            }
+        }
+        @media (min-width: 1024px) { /* Para pantallas grandes (lg) */
+            .day-cards-grid-wrapper {
+                grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 columnas */
+            }
+        }
+
+        .day-card { /* Contenedor principal para cada día (la "card" externa) */
+            background-color: #ffffff;
+            border-radius: 1.5rem; /* redondeado XL */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Sombra */
+            padding: 1.5rem;
+            /* margin-bottom: 2rem; - Esto se maneja ahora con el 'gap' del grid wrapper */
+            text-align: left;
+            display: flex; /* Para que el contenido interno se distribuya bien */
+            flex-direction: column; /* Contenido en columna */
+        }
+        .day-heading { /* Encabezado del día (ej: "Sábado:") */
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem; /* Texto 2xl */
+            font-weight: 700; /* Negrita */
+            color: #1f2937; /* Gris-900 */
+        }
+        .class-section { /* Sección para cada clase dentro de la tarjeta del día */
+            margin-bottom: 1rem; /* Espacio entre clases */
+            padding-bottom: 1rem; /* Espacio debajo de cada sección de clase */
+            border-bottom: 1px dashed #e5e7eb; /* Línea divisoria */
+        }
+        .class-section:last-child {
+            border-bottom: none; /* Eliminar la línea en la última clase del día */
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        .class-details p {
+            margin: 0.25rem 0; /* my-1 */
+            font-size: 0.95rem; /* Texto sm */
+            color: #374151; /* Gris-700 */
+        }
+        .class-details strong {
+            color: #111827; /* Gris-900 */
+        }
+        .btn-inscripcion {
+            display: inline-block;
+            background-color: #6366f1; /* Indigo-500 */
+            color: #ffffff;
+            padding: 0.75rem 1.5rem; /* py-3 px-6 */
+            border-radius: 0.75rem; /* rounded-xl */
+            text-decoration: none;
+            font-weight: 600; /* Semibold */
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            text-align: center;
+            align-self: flex-start; /* Alinea el botón a la izquierda */
+        }
+        .btn-inscripcion:hover {
+            background-color: #4f46e5; /* Indigo-600 */
+        }
+        .whatsapp-link {
+            color: #2563eb; /* Azul para enlaces */
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 640px) {
+            .afiche-title {
+                font-size: 2rem;
+            }
+            .afiche-subtitle {
+                font-size: 1.75rem;
+            }
+            .afiche-description {
+                font-size: 1rem;
+            }
+            .day-heading {
+                font-size: 1.25rem;
+            }
+            .class-details p {
+                font-size: 0.875rem;
+            }
+            .btn-inscripcion {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.875rem;
+            }
+            .day-card {
+                padding: 1rem;
+            }
+            .class-section {
+                margin-bottom: 0.75rem;
+                padding-bottom: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center py-8">
+    <div class="afiche-main-container">
+        <h1 class="afiche-title">¡Inicia el Tercer periodo de Institutos!</h1>
+        <h2 class="afiche-subtitle">Estaca Sullana</h2>
+
+        <p class="afiche-description">
+            Prepárate para fortalecer tu fe y aprender más sobre el evangelio. Tenemos cursos para todos, impartidos por excelentes maestros. ¡No te lo pierdas!
+        </p>
+
+        <div class="day-cards-grid-wrapper">
+            <!-- Contenedor de día: Martes -->
+            <div class="day-card">
+                <div class="day-heading">🟠 Martes:</div>
+                <div class="class-section">
+                    <div class="class-details">
+                        <p><strong>Maestro:</strong> Roció Mauricio</p>
+                        <p><strong>Teléfono:</strong> <a href="https://wa.me/51993897165" target="_blank" class="whatsapp-link">993897165</a></p>
+                        <p><strong>Curso:</strong> Preparación Misional (Parte A)</p>
+                        <p><strong>Hora:</strong> 8:00 p.m.</p>
+                        <p><strong>Lugar:</strong> Estaca Sullana</p>
+                    </div>
+                    <a href="https://myinstitute.churchofjesuschrist.org/signup/1688334" target="_blank" class="btn-inscripcion">¡Inscríbete!</a>
+                </div>
+            </div>
+<!-- Contenedor de día: Miércoles -->
+            <div class="day-card">
+                <div class="day-heading">🔵 Miércoles:</div>
+                <div class="class-section">
+                    <div class="class-details">
+                        <p><strong>Maestro:</strong> Diego Arias</p>
+                        <p><strong>Teléfono:</strong> <a href="https://wa.me/51935757039" target="_blank" class="whatsapp-link">935757039</a></p>
+                        <p><strong>Curso:</strong> Enseñanzas del Presidente Russell M. Nelson (Parte A)</p>
+                        <p><strong>Hora:</strong> 7:30 p.m.</p>
+                        <p><strong>Lugar:</strong> Estaca Sullana</p>
+                    </div>
+                    <a href="https://myinstitute.churchofjesuschrist.org/signup/1688336" target="_blank" class="btn-inscripcion">¡Inscríbete!</a>
+                </div>
+                <div class="class-section">
+                    <div class="class-details">
+                        <p><strong>Maestro:</strong> Eduardo Aparicio</p>
+                        <p><strong>Teléfono:</strong> <a href="https://wa.me/51994111292" target="_blank" class="whatsapp-link">994111292</a></p>
+                        <p><strong>Curso:</strong> Respondiendo mis preguntas del Evangelio (Parte A)</p>
+                        <p><strong>Hora:</strong> 8:00 p.m.</p>
+                        <p><strong>Lugar:</strong> Estaca Sullana</p>
+                    </div>
+                    <a href="https://myinstitute.churchofjesuschrist.org/signup/1688338" target="_blank" class="btn-inscripcion">¡Inscríbete!</a>
+                </div>
+                <div class="class-section">
+                    <div class="class-details">
+                        <p><strong>Maestro:</strong> Saferly Ato</p>
+                        <p><strong>Teléfono:</strong> <a href="https://wa.me/51" target="_blank" class="whatsapp-link"> </a></p>
+                        <p><strong>Curso:</strong> Enseñanzas y Doctrinas del Libro de Mormón (Parte A)</p>
+                        <p><strong>Hora:</strong> 8:30 p.m.</p>
+                        <p><strong>Lugar:</strong> Estaca Sullana</p>
+                    </div>
+                    <a href="https://myinstitute.churchofjesuschrist.org/signup/1688337" target="_blank" class="btn-inscripcion">¡Inscríbete!</a>
+                </div>
+            </div>
+
+            <!-- Contenedor de día: Jueves -->
+            <div class="day-card">
+                <div class="day-heading">🟢 Jueves:</div>
+                <div class="class-section">
+                    <div class="class-details">
+                        <p><strong>Maestro:</strong> Patricia Crisanto</p>
+                        <p><strong>Teléfono:</strong> <a href="https://wa.me/51942940551" target="_blank" class="whatsapp-link">942940551</a></p>
+                        <p><strong>Curso:</strong> La Expiación Infinita</p>
+                        <p><strong>Hora:</strong> 8:00 p.m.</p>
+                        <p><strong>Lugar:</strong> Estaca Sullana</p>
+                    </div>
+                    <a href="https://myinstitute.churchofjesuschrist.org/signup/1688340" target="_blank" class="btn-inscripcion">¡Inscríbete!</a>
+                </div>
+            </div>
+
+            <!-- Contenedor de día: Viernes -->
+            <div class="day-card">
+                <div class="day-heading">🟣 Viernes:</div>
+                <div class="class-section">
+                    <div class="class-details">
+                        <p><strong>Maestro:</strong> Hunter Flores</p>
+                        <p><strong>Teléfono:</strong> <a href="https://wa.me/51929922564" target="_blank" class="whatsapp-link">929922564</a></p>
+                        <p><strong>Curso:</strong> La Familia Eterna (Parte A)</p>
+                        <p><strong>Hora:</strong> 7:00 p.m.</p>
+                        <p><strong>Lugar:</strong> Estaca Sullana</p>
+                    </div>
+                    <a href="https://myinstitute.churchofjesuschrist.org/signup/1688339" target="_blank" class="btn-inscripcion">¡Inscríbete!</a>
+                </div>
+            </div>
+
+            <!-- Contenedor de día: Sábado -->
+            <div class="day-card">
+                <div class="day-heading">🔴 Sábado:</div>
+                <div class="class-section">
+                    <div class="class-details">
+                        <p><strong>Maestro:</strong> Hebert Alburqueque</p>
+                        <p><strong>Teléfono:</strong> <a href="https://wa.me/51969337259" target="_blank" class="whatsapp-link">969337259</a></p>
+                        <p><strong>Curso:</strong> Nuevo Testamento (Los Evangelios)</p>
+                        <p><strong>Hora:</strong> 8:00 p.m.</p>
+                        <p><strong>Lugar:</strong> Virtual - Zoom </p>
+                    </div>
+                    <a href="https://myinstitute.churchofjesuschrist.org/signup/1688342" target="_blank" class="btn-inscripcion">¡Inscríbete!</a>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-2xl font-bold text-green-700 mt-10">¡Te esperamos! 🙏</p>
+    </div>
+</body>
+</html>
